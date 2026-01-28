@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import type { JPHolderItem } from "../entities/JPHolder/JPHolderItem";
-import { JPHolderApi } from "../api/JPHolder/JPHolderApi";
+import type { JPHolderItem } from "../entities/jPHolder/JPHolderItem";
+import { JPHolderApi } from "../api/jPHolder/JPHolderApi";
 
-export function useJPHolder() {
+export function useGetPosts() {
     const [posts, setPosts] = useState<JPHolderItem[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);

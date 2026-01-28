@@ -1,4 +1,4 @@
-export interface JSONPosts {
+export interface Post {
     id: number;
     userId: number;
     title: string;

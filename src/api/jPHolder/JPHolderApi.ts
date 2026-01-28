@@ -1,4 +1,4 @@
-import { JPHolderItem } from "../../entities/JPHolder/JPHolderItem";
+import { JPHolderItem } from "../../entities/jPHolder/JPHolderItem";
 import { BaseApi } from "../BaseApi";
 
 export class JPHolderApi extends BaseApi{
@@ -10,10 +10,10 @@ export class JPHolderApi extends BaseApi{
         return rawData.map((json: any) => JPHolderItem.fromJson(json));
     }
 
-    async getDetailPost({id}: {id:number}): Promise<JPHolderItem> {
+    async getPostDetail({id}: {id:number}): Promise<JPHolderItem> {
         const rawData = await this.get(this.POSTS_PATH + `/${id}`);
 
-        return rawData.map((json: any) => JPHolderItem.fromJson(json));
+        return JPHolderItem.fromJson(rawData);
 
     }
 }

@@ -1,19 +1,16 @@
 import './App.css'
-import { useJPHolder } from './hooks/useJPHolder'
+import PostItem from './components/PostItem';
+import { useGetPosts } from './hooks/useGetPosts'
 
 function App() {
-  const { posts } = useJPHolder()
+  const { posts } = useGetPosts()
+
   return (
     <div>
-      {posts.map((item, index) => {
-        return(
-          <div key={index}>
-            <div>{item.id}</div>
-            <div>{item.title}</div>
-            <hr />
-          </div>
+      {posts.map(item => (
+        <PostItem key={item.id} item={item} />
         )
-      })}
+      )}
     </div>
   )
 }

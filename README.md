@@ -92,3 +92,40 @@ export class JPHolderApi extends BaseApi{
     }
 }
 ```
+
+### 엔티티 데이터 가공
+데이터를 가공해서 사용하고 싶으면 api호출을 통해 직접 데이터를 받아오는 엔티티에서 가공 로직을 구현하는 것이 좋다.
+
+```ts
+export class JPHolderItem extends BaseEntity{
+    id: number;
+    userId: number;
+    title: string;
+    body: string;
+
+    constructor({ id, userId, title, body }: Post) {
+        super();
+        this.id = id;
+        this.userId = userId;
+        this.title = title;
+        this.body = body;
+    }
+
+    get summary(): string {
+        if (this.body.length >= 50) {
+            return this.body.substring(0, 50) + "... 더보기";
+        }
+        return this.body;
+    }
+}
+```
+
+사용 시
+```tsx
+<div key={item.id}>
+    <div>{item.id}</div>
+    <div>{item.title}</div>
+    {/* 원본 body 대신 가공된 summary */}
+    <div>{item.summary}</div> 
+</div>
+```
